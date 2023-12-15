@@ -1,0 +1,25 @@
+{
+    "name": "ibltech/jwt-validator",
+    "description": "Package to validate stateful or not stateful JWT tokens",
+    "type": "library",
+    "require": {
+        "illuminate/database": "^10.37",
+        "illuminate/http": "^10.37",
+        "firebase/php-jwt": "^6.10"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "IBLTech\\JwtValidator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Arthur Santos",
+            "email": "arthur_alves.santos@outlook.com.br"
+        }
+    ]
+}
