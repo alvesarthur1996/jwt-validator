@@ -3,8 +3,8 @@
     "description": "Package to validate stateful or not stateful JWT tokens",
     "type": "library",
     "require": {
-        "illuminate/database": ">=10.37",
-        "illuminate/http": ">=10.37",
+        "illuminate/database": ">=10.37.*",
+        "illuminate/http": ">=10.37.*",
         "firebase/php-jwt": ">=6.10"
     },
     "require-dev": {
