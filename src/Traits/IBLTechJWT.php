@@ -2,11 +2,8 @@
 
 namespace IBLTech\JwtValidator\Traits;
 
-use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Log;
 
 trait IBLTechJWT
 {
