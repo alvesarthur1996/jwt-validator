@@ -4,6 +4,7 @@ namespace IBLTech\JwtValidator\Traits;
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Illuminate\Http\Request;
 
 trait IBLTechJWT
 {
@@ -15,5 +16,12 @@ trait IBLTechJWT
     public static function decode_token($jwt)
     {
         return JWT::decode($jwt, new Key(env('JWT_SECRET'), 'HS256'));
+    }
+
+    public static function get_credentials(Request $request)
+    {
+        $credentials = @$request->jwt_credentials ?? @$request->json('jwt_credentials');
+
+        return $credentials;
     }
 }
