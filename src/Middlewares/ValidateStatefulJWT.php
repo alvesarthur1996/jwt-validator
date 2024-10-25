@@ -28,13 +28,18 @@ class ValidateStatefulJWT
 
             if (!$decoded)
                 return Response::json($this->INVALID_TOKEN, 401);
+            $exp = 60;
+            $exp_config = @array_filter(explode(',', @$decoded->user->permissions->permissions ?? []), fn($item) => preg_match('/^exp:\d+$/', $item))[0];
+
+            if (!is_null($exp_config))
+                $exp = (int) (@explode(':', $exp_config)[1] ?? 60);
 
             $data = $request->json()->all();
             $data['jwt_credentials'] = (array) $decoded;
             $request->json()->replace($data);
 
             $decoded->iat = Carbon::now()->timestamp;
-            $decoded->exp = Carbon::now()->addMinutes(30)->timestamp;
+            $decoded->exp = Carbon::now()->addMinutes($exp)->timestamp;
             $response = $next($request);
             $response->header('Session-Jwt', $this->create_token((array) $decoded));
 
